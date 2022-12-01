@@ -3,3 +3,11 @@
 ################################################################################
 
 /.vs/EPM-Mouser-Assessment/FileContentIndex
+*.suo
+/.vs/EPM.Mouser.Interview/DesignTimeBuild
+/.vs/EPM.Mouser.Interview/FileContentIndex
+/.vs/EPM.Mouser.Interview/v17
+/.vs/ProjectEvaluation
+/EPM.Mouser.Interview.Web/bin/Debug/net6.0
+/EPM.Mouser.Interview.Web/obj
+/.vs

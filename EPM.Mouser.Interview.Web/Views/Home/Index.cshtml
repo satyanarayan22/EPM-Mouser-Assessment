@@ -1,0 +1,46 @@
+﻿@model EPM.Mouser.Interview.Web.Models.ProductListModel;
+@using EPM.Mouser.Interview.Web.HtmlHelper;
+
+@{
+    ViewData["Title"] = "Test Page";
+}
+
+
+<h1>In Stock items</h1>
+
+@*
+    Display a table here which shows the products with any Available stock
+    - use the bootstrap table styling
+    - Available stock = Total Stock - Reserved Stock
+    - Columns shown:
+        - action => with a link to a placeholder product detail page.
+        - Name
+        - Total Amount in stock
+        - Available stock (this should be orange if < 10 and red < zero)
+
+*@
+<table class="table  table-striped col-sm-12 col-md-6 col-lg-4">
+    <tr>
+        <th>@Html.LabelFor(model => model.ProductDisplayModels.First().Id)</th>
+        <th>@Html.LabelFor(model => model.ProductDisplayModels.First().Name)</th>
+        <th>@Html.LabelFor(model => model.ProductDisplayModels.First().InStockQuantity)</th>
+        <th>@Html.LabelFor(model => model.ProductDisplayModels.First().AvailableStock)</th>
+    </tr>
+    @foreach (var item in Model.ProductDisplayModels)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink($"Product Details-({item.Id})", "", "", new { @class = "btn" })
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.InStockQuantity)
+            </td>
+            <td class=@HtmlExt.GetClassForAvailableStock(item.AvailableStock)>
+                @Html.DisplayFor(model => item.AvailableStock)
+            </td>
+        </tr>
+    }
+</table>
